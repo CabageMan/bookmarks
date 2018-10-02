@@ -16,7 +16,7 @@ public class BookMark {
     //Bookmark view method
     @Override
     public String toString() {
-        return String.format("ID: %s | Title: %s | Content: %s",
+        return String.format("ID: %s Title: %s Content: %s",
                 this.id, this.title, this.content);
     }
 }

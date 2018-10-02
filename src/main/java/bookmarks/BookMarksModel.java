@@ -43,7 +43,7 @@ public class BookMarksModel {
         ConnectionWithDb();
         stat = connection.createStatement();
         //Save the result of the request
-        ResultSet rs = stat.executeQuery("SELECT ID, TITLE, CONTENT FROM BOOKMARKS");
+        ResultSet rs = stat.executeQuery("SELECT * FROM BOOKMARKS");
 
         //Save all received objects
         while (rs.next()) {
@@ -76,6 +76,36 @@ public class BookMarksModel {
             stat.close();
             CloseDB();
         }
+    }
+
+    public static List<BookMark> filterBookmarks(String key) throws ClassNotFoundException, SQLException, NamingException
+    {
+        //Create a list for filtered bookmarks
+        List<BookMark> bookmarks = new ArrayList<BookMark>();
+
+        ConnectionWithDb();
+        stat = connection.createStatement();
+        //Save the result of the request
+        PreparedStatement statement = connection.prepareStatement("SELECT ID, TITLE, CONTENT FROM BOOKMARKS WHERE TITLE LIKE ? " +
+                                                                                                                 "OR CONTENT LIKE ?");
+        statement.setString(1, "%" + key + "%");
+        statement.setString(2, "%" + key + "%");
+        ResultSet rs = statement.executeQuery();
+
+        System.out.println(key);
+        //Save all received objects
+        while (rs.next()) {
+            bookmarks.add(new BookMark(rs.getInt("id"),
+                                       rs.getString("title"),
+                                       rs.getString("content")));
+        }
+
+        rs.close();
+        statement.close();
+        stat.close();
+        CloseDB();
+
+        return bookmarks;
     }
 
     public static void CloseDB() throws ClassNotFoundException, SQLException {

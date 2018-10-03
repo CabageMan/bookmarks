@@ -7,6 +7,7 @@ import java.util.List;
 
 public class BookMarksModel {
 
+    // Create db-connection class objects
     public static Connection connection;
     public static Statement stat;
 
@@ -17,6 +18,7 @@ public class BookMarksModel {
     }
 
     public static void addBookmark(BookMark bookmark) throws ClassNotFoundException, SQLException {
+
         try {
             ConnectionWithDb();
             stat = connection.createStatement();
@@ -26,7 +28,6 @@ public class BookMarksModel {
             statement.execute();
             statement.close();
         } catch (Exception e) {
-            //System.out.println(e);
             e.printStackTrace();
         }
         finally {
@@ -35,6 +36,7 @@ public class BookMarksModel {
         }
     }
 
+    /*
     public static List<BookMark> getAllBookmarks() throws ClassNotFoundException, SQLException, NamingException
     {
         //Create a list for bookmarks
@@ -58,6 +60,7 @@ public class BookMarksModel {
 
         return bookmarks;
     }
+    */
 
     public static void deleteBookmark(int id) throws SQLException, ClassNotFoundException {
 
@@ -69,7 +72,6 @@ public class BookMarksModel {
             statement.execute();
             statement.close();
         } catch (Exception e) {
-            //System.out.println(e);
             e.printStackTrace();
         }
         finally {

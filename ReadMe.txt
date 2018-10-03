@@ -1,15 +1,6 @@
-Camel Java Router Project
+Text exam solution by Bedny Viktor
 =========================
 
-To build this project use
+Used technologies:
 
-    mvn install
-
-To run this project from within Maven use
-
-    mvn exec:java
-
-For more help see the Apache Camel documentation
-
-    http://camel.apache.org/
-
+MacOS 10.12.6, Intellij Idea Ultimate 2018.2, Tomcat 9.0.12

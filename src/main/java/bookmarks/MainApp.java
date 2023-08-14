@@ -16,6 +16,10 @@ import java.util.List;
 @WebServlet(name = "MainApp", urlPatterns = "/bookmarks")
 public class MainApp extends HttpServlet {
 
+    public static  void main(String[] args) {
+
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Set character encoding
